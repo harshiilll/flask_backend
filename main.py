@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+
+
+import os
+
+
 from datetime import datetime, date
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///final2.db"
@@ -7,6 +12,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 global login_ornot
 login_ornot=False
+
+
+port=os.getenv("PORT", default=5000)
+
+
 current_date=date.today()
 hour_and_minute = datetime.now().strftime("%H:%M")
 
